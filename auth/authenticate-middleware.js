@@ -14,7 +14,7 @@ function authenticate(req, res, next) {
   if(token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if(err) {
-        res.status(401).json({ message: `Keep your hands off that dial!` });
+        res.status(400).json({ message: `Keep your hands off that dial!` });
       } else {
         req.decodedToken = decodedToken;
         next();
