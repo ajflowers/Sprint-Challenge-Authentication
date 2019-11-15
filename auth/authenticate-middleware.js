@@ -38,13 +38,15 @@ function validateUser (req, res, next) {
     errors.push('Please include a password with at least 8 characters.')
   }
 
+  // console.log('validation errors', errors, errors.length)
+
   if (errors.length > 0) {
-    next();
-  } else {
     res.status(400).json({
       message: 'Invalid user info',
       errors
     });
+  } else {
+    next();
   }
 
   
